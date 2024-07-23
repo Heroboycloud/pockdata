@@ -2,6 +2,7 @@ from bottle import route,run,request,response
 from faker import Faker
 from faker.providers import internet
 import json
+import bottle
 
 fake= Faker()
 
@@ -51,3 +52,7 @@ def sentence(val=10):
   return fake.sentence(val)
 
 #run(reloader=True,port=3000)
+if __name__ == "__main__":
+    run(port=8080)
+
+app = bottle.default_app()
