@@ -9,7 +9,7 @@ fake= Faker()
 
 @route("/")
 def home():
-  return template("<h1> This is a random data generator i built for fun...</h1><p>Apis include /user?list=[any no]</p>")
+  return "<h1> This is a random data generator i built for fun...</h1><p>Apis include /user?list=[any no]</p>"
 
 @route("/user")
 def get_user():
