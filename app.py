@@ -1,4 +1,4 @@
-from bottle import route,run,request,response
+from bottle import route,run,request,response,template
 from faker import Faker
 from faker.providers import internet
 import json
@@ -9,7 +9,7 @@ fake= Faker()
 
 @route("/")
 def home():
-  return " it is nice you are here"
+  return template("<h1> This is a random data generator i built for fun...</h1><p>Apis include /user?list=[any no]</p>")
 
 @route("/user")
 def get_user():
