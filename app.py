@@ -3,6 +3,7 @@ from faker import Faker
 from faker.providers import internet
 import json
 import bottle
+from requests import get,post
 
 fake= Faker()
 
@@ -50,6 +51,27 @@ def useragent():
 @route("/sentence/<val:int>")
 def sentence(val=10):
   return fake.sentence(val)
+
+
+
+@route("/insult")
+def insult_api():
+  try:
+   url= "https://evilinsult.com/generate_insult.php?lang=en&type=json"
+   r= get(url).json()
+   return r
+  except:
+   return "Error retrieving contents,Will get back later"
+
+
+@route("/dad_joke")
+def getdad_joke():
+  url= "https://icanhazdadjoke.com/"
+  try:
+    r=get(url).json()
+    return r
+  except:
+    return "Dad has no jokes now"
 
 #run(reloader=True,port=3000)
 if __name__ == "__main__":
