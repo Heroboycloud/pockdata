@@ -54,6 +54,15 @@ def sentence(val=10):
 
 
 
+@route("/advice")
+def insult_api():
+  try:
+   url= "https://api.adviceslip.com/advice"
+   r= get(url).json()
+   return r["slip"]["advice"]
+  except:
+   return "Error retrieving contents,Will get back later"
+
 @route("/insult")
 def insult_api():
   try:
@@ -75,7 +84,21 @@ def getdad_joke():
     return "Dad has no jokes now"
 
 
-
+@route("/joke")
+def get_joke():
+  url= "https://v2.jokeapi.dev/joke/{}?blacklistFlags={}&format={}"
+  if request.query.category:
+     cat= request.query.category or "Programming"
+     flags= request.query.flags or "racist"
+     format= request.query.format or "json"
+     if request.query.format == "text":
+        r= get(url.format(cat,flags,format)).text
+     else:
+        r= get(url.format(cat,flags,format)).json()
+  else:
+     url= "https://v2.jokeapi.dev/joke/Programming?format=txt"
+     r= get(url).text
+  return r
 
 
 
