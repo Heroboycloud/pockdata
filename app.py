@@ -67,11 +67,18 @@ def insult_api():
 @route("/dad_joke")
 def getdad_joke():
   url= "https://icanhazdadjoke.com/"
+  headers= {"Accept":"application/json","User-Agent":"Pockdata services"}
   try:
-    r=get(url).json()
+    r=get(url,headers=headers).json()
     return r
   except:
     return "Dad has no jokes now"
+
+
+
+
+
+
 
 #run(reloader=True,port=3000)
 if __name__ == "__main__":
