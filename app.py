@@ -1,4 +1,4 @@
-from bottle import route,run,request,response,template
+from bottle import route,run,request,response,template,error
 from faker import Faker
 from faker.providers import internet
 import json
@@ -7,6 +7,10 @@ from requests import get,post
 
 fake= Faker()
 
+
+@error(404)
+def error_handler(error):
+  return 'Nothing here, sorry'
 
 @route("/")
 def home():
