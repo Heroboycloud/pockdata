@@ -63,6 +63,19 @@ def insult_api():
   except:
    return "Error retrieving contents,Will get back later"
 
+
+
+
+@route("/riddle")
+def insult_api():
+  try:
+   url= "https://riddles-api.vercel.app/random"
+   r= get(url).json()
+   return r
+  except:
+   return "Error retrieving contents,Will get back later"
+
+
 @route("/insult")
 def insult_api():
   try:
